@@ -3,10 +3,10 @@ package com.springboot.service;
 import java.util.Arrays;
 import java.util.List;
 
-import org.springframework.boot.web.reactive.function.client.WebClientCustomizer;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import com.springboot.binding.Passenger;
 import com.springboot.binding.Ticket;
@@ -18,13 +18,14 @@ public class TicketServiceImpl implements TicketService {
 	public Ticket getTicket(Passenger p) 
 	{
 		String urlString="http://localhost:8080/ticket";
-		RestTemplate restTemplate=new RestTemplate();
-		ResponseEntity<Ticket> postForEntity = restTemplate.postForEntity(urlString, p, Ticket.class);
+		
+	RestTemplate restTemplate=new RestTemplate();
+	ResponseEntity<Ticket> postForEntity = restTemplate.postForEntity(urlString, p, Ticket.class);
 		Ticket ticket = postForEntity.getBody();
 		return ticket;
 		
 		
-		
+
 		
 	}
 	
